@@ -22,3 +22,9 @@ export async function selectUser(id) {
       .then(res => res)
   });
 }
+export async function deleteUser(id) {
+  return openDb().then(db => {
+    return db.get('DELETE FROM usuarios WHERE id=?', [id])
+      .then(res => res)
+  });
+}

@@ -1,6 +1,6 @@
 import { openDb } from './configDB.js';
 import express from 'express';
-import { insertUser, updateUser, selectUsers, selectUser } from './call/aduser.js'
+import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
 
 openDb();
 
@@ -43,5 +43,8 @@ app.put('/user', function (req, res) {
 
   }
 });
-
-app.listen(3000, () => console.log('api rodando'))
+app.delete('/user', async function (req, res) {
+  let usuario = await deleteUser(req.body.id);
+  res.json(usuario);
+})
+app.listen(3000, () => console.log('Api rodando...'))
