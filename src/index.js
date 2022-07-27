@@ -1,24 +1,35 @@
-import { openDb } from './configDB.js';
-import express from 'express';
-// import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
 
-openDb();
+import express from 'express';
+import router from './routes.js';
+import fs from 'fs';
+import https from 'https';
+import cors from 'cors';
+
+
 
 const app = express();
+
 app.use(express.json());
 
+app.use(cors());
 
-import router from './routes.js';
+app.use(router);
 
-app.use(router)
+app.listen(3000, () => console.log('Api rodando...'))
 
+https.createServer({
+  cert: fs.readFileSync('src/ssl/code.crt'),
+  key: fs.readFileSync('src/ssl/code.key')
+}, app).listen(443, ()=> console.log("Rodando em HTTPS"))
 
+ 
+// import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
 
 // app.get('/', function (req, res) {
 //   res.send("ola imundo");
 // });
 // app.get('/users', async function (req, res) {
-//   let Usuarios = await selectUsers();
+//   let Usuarios = await selectUsers(); 
 //   res.json(Usuarios);
 // });
 // app.get('/user', async function (req, res) {
@@ -57,5 +68,3 @@ app.use(router)
 // })
 
 
-
-app.listen(3000, () => console.log('Api rodando...'))
