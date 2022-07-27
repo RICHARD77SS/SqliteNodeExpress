@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js';
+import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './controler/aduser.js';
 
 
 const router = Router();
