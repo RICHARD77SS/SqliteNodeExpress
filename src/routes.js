@@ -5,7 +5,16 @@ import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './c
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.send('Rotas do express.')
-})
+  res.json({
+    "statusCode": 200,
+    "msg": "Api Rodando"
+  })
+});
+
+router.get('/users', selectUsers);
+router.get('/user', selectUser);
+router.post('/user', insertUser);
+router.put('/user', updateUser);
+router.delete('/user', deleteUser);
 
 export default router;

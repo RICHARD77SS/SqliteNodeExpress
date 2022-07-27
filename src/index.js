@@ -1,6 +1,6 @@
 import { openDb } from './configDB.js';
 import express from 'express';
-import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
+// import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
 
 openDb();
 
