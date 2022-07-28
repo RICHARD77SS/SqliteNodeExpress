@@ -4,6 +4,9 @@ import router from './routes.js';
 import fs from 'fs';
 import https from 'https';
 import cors from 'cors';
+import { getUsers, addUser } from './axios.js';
+
+getUsers()
 
 
 
@@ -15,12 +18,12 @@ app.use(cors());
 
 app.use(router);
 
-app.listen(3000, () => console.log('Api rodando...'))
+app.listen(3000, () => console.log('Api rodando em http://localhost:3000'))
 
 https.createServer({
   cert: fs.readFileSync('src/ssl/code.crt'),
   key: fs.readFileSync('src/ssl/code.key')
-}, app).listen(443, ()=> console.log("Rodando em HTTPS"))
+}, app).listen(443, () => console.log("Rodando em HTTPS https://localhost:443"))
 
  
 // import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
