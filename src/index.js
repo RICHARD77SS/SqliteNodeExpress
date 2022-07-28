@@ -4,9 +4,9 @@ import router from './routes.js';
 import fs from 'fs';
 import https from 'https';
 import cors from 'cors';
-import { getUsers, addUser } from './axios.js';
+import { editUser, addUser } from './axios.js';
 
-getUsers()
+
 
 
 
