@@ -4,14 +4,28 @@ import router from './routes.js';
 import fs from 'fs';
 import https from 'https';
 import cors from 'cors';
-import { editUser, addUser } from './axios.js';
-
-
 
 
 
 const app = express();
-
+app.get('/', function (req, res) {
+  const html = `
+    <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React no Servidor - Programador a Bordo</title>
+      </head>
+      <body>
+        <div id="app">
+         ola mundo
+        </div>
+      </body>
+      </html>
+  `
+  res.send(html);
+})
 app.use(express.json());
 
 app.use(cors());
@@ -26,48 +40,5 @@ https.createServer({
 }, app).listen(443, () => console.log("Rodando em HTTPS https://localhost:443"))
 
  
-// import { insertUser, updateUser, selectUsers, selectUser, deleteUser } from './call/aduser.js'
-
-// app.get('/', function (req, res) {
-//   res.send("ola imundo");
-// });
-// app.get('/users', async function (req, res) {
-//   let Usuarios = await selectUsers(); 
-//   res.json(Usuarios);
-// });
-// app.get('/user', async function (req, res) {
-//   let Usuario = await selectUser(req.body.id);
-//   res.json(Usuario);
-// });
-
-
-// // INSERT INTO TABLE
-
-// app.post('/user', function (req, res) {
-//   insertUser(req.body);
-//   res.json({
-//     "statusCode": 200
-//   })
-// });
-// //UPDATE INTO TABLE
-// app.put('/user', function (req, res) {
-//   if (req.body && !req.body.id) {
-//     res.json({
-//       "statusCode": "400",
-//       "msg": "Você precisa informar um id "
-//     })
-//   } else {
-//     updateUser(req.body);
-//     res.json({
-//       "statusCode": 200
-//     })
-
-//   }
-// });
-// //DELETE
-// app.delete('/user', async function (req, res) {
-//   let usuario = await deleteUser(req.body.id);
-//   res.json(usuario);
-// })
 
 

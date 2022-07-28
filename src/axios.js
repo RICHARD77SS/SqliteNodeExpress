@@ -34,6 +34,20 @@ const userDelete = {
   data: { id: '3' }
 };
 
+
+const userAdd = {
+  method: 'POST',
+  url: 'http://localhost:3000/user',
+  headers: { 'Content-Type': 'application/json' },
+  data: {
+    email: 'Mariulu',
+    password: 'mendonsa',
+    name: 'foiu',
+    username: 'vaio'
+  }
+};
+
+
 export function getUsers() {
   axios.get(url)
   .then(res => {
@@ -53,12 +67,11 @@ export function getUser() {
 
 
 export function addUser() {
-  axios.post(url2, newUser)
-    .then(res => {
-      const data = res.data
-      console.log(data)
-    })
-    .catch(error => console.log(error))
+  axios.request(userAdd).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
 }
 
 
@@ -69,9 +82,6 @@ export function editUser() {
     console.error(error);
   });
 }
-
-
-
 
 
 export function deleteUser() {
