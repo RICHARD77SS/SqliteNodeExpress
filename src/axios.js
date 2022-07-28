@@ -56,7 +56,14 @@ export function getUsers() {
     })
   .catch(error => console.log(error))
 } 
+
 export function getUser() {
+  const userGet = {
+    method: 'GET',
+    url: 'http://localhost:3000/user',
+    headers: { 'Content-Type': 'application/json' },
+    data: { id: '6' }
+  };
   axios.request(userGet).then(function (response) {
     console.log(response.data);
   }).catch(function (error) {
